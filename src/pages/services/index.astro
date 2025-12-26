@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTASection from "../../components/CTASection.astro";
+
+const services = [
+    {
+        id: "business-advisory",
+        title: "Business Advisory",
+        description:
+            "We provide ongoing strategic guidance to help you navigate market complexity. Our advisory services are designed to challenge your thinking, identify blind spots, and validate your growth assumptions with rigorous analysis.",
+        outcomes: [
+            "Strategic Planning & Execution",
+            "Revenue Optimization Models",
+            "Market Expansion Analysis",
+            "Business Structuring",
+        ],
+    },
+    {
+        id: "financial-planning",
+        title: "Financial Planning",
+        description:
+            "Beyond basic accounting, we build comprehensive financial models that forecast the future of your business. We help you manage cash flow, optimize capital allocation, and prepare for major liquidity events.",
+        outcomes: [
+            "Cash Flow Forecasting",
+            "Capital Allocation Strategy",
+            "Investment Analysis",
+            "Exit Planning",
+        ],
+    },
+    {
+        id: "compliance-risk",
+        title: "Compliance & Risk",
+        description:
+            "Protect your business from regulatory shifts and operational vulnerabilities. We conduct deep-dive audits and implement governance frameworks that ensure you remain compliant without stifling agility.",
+        outcomes: [
+            "Regulatory Compliance Audits",
+            "Risk Management Frameworks",
+            "Corporate Governance",
+            "Internal Process Controls",
+        ],
+    },
+    {
+        id: "strategic-growth",
+        title: "Strategic Growth",
+        description:
+            "Scaling a business requires more than just sales. We help you build the operational infrastructure, leadership capabilities, and systems needed to support sustainable, long-term expansion.",
+        outcomes: [
+            "Organizational Design",
+            "Operational Scalability",
+            "Leadership Development",
+            "Performance Management Systems",
+        ],
+    },
+];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "") + "/";
+---
+
+<BaseLayout
+    title="Our Services | Modern Consultant"
+    description="Comprehensive business advisory, financial planning, and risk management services for Perth businesses."
+>
+    <section class="py-24 bg-surface border-b border-border-subtle">
+        <div class="container-custom">
+            <h1
+                class="font-heading font-bold text-5xl md:text-6xl text-text-main mb-6"
+            >
+                Our Expertise
+            </h1>
+            <p class="text-xl text-text-muted max-w-2xl leading-relaxed">
+                We specialize in solving high-stakes problems for established
+                enterprises. Our approach is rigorous, data-driven, and focused
+                entirely on outcomes.
+            </p>
+        </div>
+    </section>
+
+    <div class="bg-white">
+        {
+            services.map((service, index) => (
+                <section
+                    id={service.id}
+                    class={`py-24 border-b border-border-subtle ${index % 2 !== 0 ? "bg-surface/30" : ""}`}
+                >
+                    <div class="container-custom grid md:grid-cols-12 gap-12">
+                        <div class="md:col-span-4">
+                            <h2 class="font-heading font-bold text-3xl text-text-main mb-4 sticky top-24">
+                                {service.title}
+                            </h2>
+                        </div>
+                        <div class="md:col-span-8">
+                            <p class="text-lg text-text-muted mb-8 leading-relaxed max-w-prose">
+                                {service.description}
+                            </p>
+
+                            <h3 class="font-heading font-semibold text-sm text-text-main uppercase tracking-wider mb-4">
+                                Key Outcomes
+                            </h3>
+                            <ul class="grid sm:grid-cols-2 gap-4 mb-10">
+                                {service.outcomes.map((item) => (
+                                    <li class="flex items-center gap-3 text-text-muted">
+                                        <span class="w-1.5 h-1.5 bg-primary rounded-full" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <a
+                                href={`${base}contact`}
+                                class="inline-flex items-center font-semibold text-primary hover:text-text-main transition-colors border-b-2 border-primary/20 hover:border-primary pb-0.5"
+                            >
+                                Book a consultation regarding {service.title}
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            ))
+        }
+    </div>
+
+    <CTASection
+        headline="Unsure which service fits your needs?"
+        btnText="Let's Discuss"
+        href={`${base}contact`}
+    />
+</BaseLayout>

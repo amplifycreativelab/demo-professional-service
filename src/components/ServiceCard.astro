@@ -1,0 +1,39 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    outcomes: string[];
+    href: string;
+}
+
+const { title, description, outcomes, href } = Astro.props;
+---
+
+<article
+    class="p-8 border border-border-subtle bg-white hover:border-primary/50 transition-colors group h-full flex flex-col"
+>
+    <h3
+        class="font-heading font-bold text-2xl mb-4 group-hover:text-primary transition-colors"
+    >
+        {title}
+    </h3>
+    <p class="text-text-muted mb-6 flex-grow">{description}</p>
+
+    <ul class="space-y-2 mb-8">
+        {
+            outcomes.map((item) => (
+                <li class="flex items-start gap-2 text-sm text-text-muted">
+                    <span class="text-primary mt-1">•</span>
+                    <span>{item}</span>
+                </li>
+            ))
+        }
+    </ul>
+
+    <a
+        href={href}
+        class="text-primary font-semibold text-sm hover:underline underline-offset-4 self-start mt-auto flex items-center gap-1"
+    >
+        Book Consultation <span>&rarr;</span>
+    </a>
+</article>

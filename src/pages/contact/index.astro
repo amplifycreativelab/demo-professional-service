@@ -1,0 +1,199 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+    title="Contact Us | Modern Consultant"
+    description="Book a confidential consultation with Modern Consultant in Perth, WA."
+>
+    <div class="grid lg:grid-cols-2 min-h-[calc(100vh-80px)]">
+        <!-- Contact Details & Map Context -->
+        <div
+            class="bg-surface border-r border-border-subtle p-8 md:p-16 lg:p-24 flex flex-col justify-center"
+        >
+            <div class="max-w-xl">
+                <span
+                    class="text-primary font-bold tracking-wider uppercase text-sm mb-4 block"
+                    >Get in Touch</span
+                >
+                <h1
+                    class="font-heading font-bold text-4xl md:text-5xl text-text-main mb-8"
+                >
+                    Start the conversation.
+                </h1>
+                <p class="text-lg text-text-muted mb-12 leading-relaxed">
+                    The first step towards clarity is a conversation. Reach out
+                    to schedule a confidential discovery call where we can
+                    discuss your specific situation and see if we are the right
+                    fit.
+                </p>
+
+                <div class="space-y-8">
+                    <div>
+                        <h3
+                            class="font-heading font-bold text-lg mb-2 text-text-main"
+                        >
+                            Perth Office
+                        </h3>
+                        <p class="text-text-muted">
+                            Level 24, St Georges Terrace,<br />
+                            Perth, WA 6000<br />
+                            Australia
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="font-heading font-bold text-lg mb-2 text-text-main"
+                        >
+                            Contact Info
+                        </h3>
+                        <ul class="space-y-2 text-text-muted">
+                            <li>
+                                <a
+                                    href="tel:+61891234567"
+                                    class="hover:text-primary transition-colors"
+                                    >+61 8 9123 4567</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="mailto:hello@modernconsultant.com.au"
+                                    class="hover:text-primary transition-colors"
+                                    >hello@modernconsultant.com.au</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-8 border-t border-border-subtle/50">
+                        <p class="text-xs text-text-muted italic">
+                            * All consultations are strictly confidential. We
+                            sign NDAs upon request before the first meeting.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="bg-white p-8 md:p-16 lg:p-24 flex flex-col justify-center">
+            <form
+                class="max-w-xl w-full space-y-6"
+                data-netlify="true"
+                name="consultation"
+            >
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label
+                            for="name"
+                            class="block text-sm font-semibold text-text-main"
+                            >Full Name <span class="text-primary">*</span
+                            ></label
+                        >
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            class="w-full px-4 py-3 bg-surface border border-border-subtle rounded-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        />
+                    </div>
+                    <div class="space-y-2">
+                        <label
+                            for="email"
+                            class="block text-sm font-semibold text-text-main"
+                            >Email Address <span class="text-primary">*</span
+                            ></label
+                        >
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            class="w-full px-4 py-3 bg-surface border border-border-subtle rounded-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        />
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label
+                            for="phone"
+                            class="block text-sm font-semibold text-text-main"
+                            >Phone</label
+                        >
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            class="w-full px-4 py-3 bg-surface border border-border-subtle rounded-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        />
+                    </div>
+                    <div class="space-y-2">
+                        <label
+                            for="business"
+                            class="block text-sm font-semibold text-text-main"
+                            >Business Name</label
+                        >
+                        <input
+                            type="text"
+                            id="business"
+                            name="business"
+                            class="w-full px-4 py-3 bg-surface border border-border-subtle rounded-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        />
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label
+                        for="interest"
+                        class="block text-sm font-semibold text-text-main"
+                        >I'm interested in...</label
+                    >
+                    <select
+                        id="interest"
+                        name="interest"
+                        class="w-full px-4 py-3 bg-surface border border-border-subtle rounded-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-text-main"
+                    >
+                        <option value="advisory"
+                            >Strategic Business Advisory</option
+                        >
+                        <option value="financial">Financial Planning</option>
+                        <option value="risk">Compliance & Risk</option>
+                        <option value="growth">Strategic Growth</option>
+                        <option value="other">Other / Not Sure</option>
+                    </select>
+                </div>
+
+                <div class="space-y-2">
+                    <label
+                        for="message"
+                        class="block text-sm font-semibold text-text-main"
+                        >Briefly describe your situation</label
+                    >
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        class="w-full px-4 py-3 bg-surface border border-border-subtle rounded-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    ></textarea>
+                </div>
+
+                <!-- Honeypot -->
+                <div class="hidden">
+                    <label
+                        >Don't fill this out if you're human: <input
+                            name="bot-field"
+                        /></label
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full bg-primary text-white py-4 rounded font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 mt-4"
+                >
+                    Request Consultation
+                </button>
+            </form>
+        </div>
+    </div>
+</BaseLayout>

@@ -1,0 +1,260 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import CaseStudyCard from "../components/CaseStudyCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import FAQ from "../components/FAQ.astro";
+import CTASection from "../components/CTASection.astro";
+
+// Move to data files later? For now, inline is faster for the first pass.
+const services = [
+	{
+		title: "Business Advisory",
+		description:
+			"Navigate complex market shifts with data-backed strategic guidance tailored to your specific industry challenges.",
+		outcomes: [
+			"Revenue Optimization",
+			"Market Expansion Strategy",
+			"Operational Efficiency",
+		],
+		href: "services",
+	},
+	{
+		title: "Financial Planning",
+		description:
+			"Comprehensive financial modeling and forecasting to ensure long-term stability and growth for your enterprise.",
+		outcomes: [
+			"Cash Flow Management",
+			"Investment Strategy",
+			"Risk Mitigation",
+		],
+		href: "services",
+	},
+	{
+		title: "Compliance & Risk",
+		description:
+			"Proactive risk assessment and regulatory compliance frameworks to protect your business reputation and assets.",
+		outcomes: [
+			"Regulatory Audits",
+			"Governance Frameworks",
+			"Risk Assessment",
+		],
+		href: "services",
+	},
+];
+
+const caseStudies = [
+	{
+		client: "Manufacturing SME",
+		problem: "Stagnant growth despite increasing market demand.",
+		outcome: "22% revenue increase in Q1 post-implementation.",
+		href: "case-studies",
+	},
+	{
+		client: "Boutique Legal Firm",
+		problem:
+			"Inefficient operational workflows causing billable hour leakage.",
+		outcome: "Recovered 15 hours/week of billable time per partner.",
+		href: "case-studies",
+	},
+	{
+		client: "Logistics Provider",
+		problem: "High staff turnover affecting service delivery consistency.",
+		outcome: "Retention rate improved by 40% within 6 months.",
+		href: "case-studies",
+	},
+];
+
+const testimonials = [
+	{
+		quote: "The strategic clarity we gained was transformative. We finally have a roadmap that feels achievable and ambitious.",
+		author: "Sarah Jenkins",
+		role: "Director, Jenkins Manufacturing",
+	},
+	{
+		quote: "Professional, precise, and incredibly insightful. They understood our nuance immediately.",
+		author: "Michael Ross",
+		role: "Principal, Ross Associates",
+	},
+	{
+		quote: "The ROI on their advisory services was evident within the first three months. Highly recommended.",
+		author: "David Chen",
+		role: "CEO, Nexa Logistics",
+	},
+];
+
+const faqs = [
+	{
+		question: "What happens in the first consultation?",
+		answer: "We take the time to understand your current position, key challenges, and strategic goals. It is a no-obligation discussion to assess fit and potential value.",
+	},
+	{
+		question: "Who do you typically work with?",
+		answer: "We specialise in working with established SMEs, directors, and professional service firms in Western Australia who are ready for their next phase of growth.",
+	},
+	{
+		question: "Do you offer ongoing advisory?",
+		answer: "Yes, our core engagement model is long-term partnership, providing consistent guidance and accountability as you execute your strategy.",
+	},
+	{
+		question: "Are consultations confidential?",
+		answer: "Absolutely. We adhere to strict confidentiality agreements from the very first interaction.",
+	},
+];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "") + "/";
+---
+
+<BaseLayout title="Modern Consultant | Strategic Advice for Perth Businesses">
+	<Hero
+		headline="Strategic Advice for Confident Business Decisions"
+		subheading="We help Perth-based businesses navigate growth, compliance, and complexity with clarity."
+		primaryBtn="Book a Consultation"
+		primaryHref={`${base}contact`}
+		secondaryBtn="View Services"
+		secondaryHref={`${base}services`}
+	/>
+
+	<!-- How It Works -->
+	<section class="py-24 bg-white border-b border-border-subtle">
+		<div class="container-custom">
+			<div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+				<div class="space-y-4">
+					<span class="text-primary font-bold text-lg block">01</span>
+					<h3 class="font-heading font-bold text-xl">
+						Initial Consultation
+					</h3>
+					<p class="text-text-muted text-sm leading-relaxed">
+						Understand goals, challenges, and risks through a
+						deep-dive discovery session.
+					</p>
+				</div>
+				<div class="space-y-4">
+					<span class="text-primary font-bold text-lg block">02</span>
+					<h3 class="font-heading font-bold text-xl">
+						Strategic Analysis
+					</h3>
+					<p class="text-text-muted text-sm leading-relaxed">
+						Receive clear, data-backed recommendations tailored to
+						your specific context.
+					</p>
+				</div>
+				<div class="space-y-4">
+					<span class="text-primary font-bold text-lg block">03</span>
+					<h3 class="font-heading font-bold text-xl">
+						Implementation & Support
+					</h3>
+					<p class="text-text-muted text-sm leading-relaxed">
+						Ongoing guidance with measurable outcomes to ensure
+						successful execution.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Credentials / Trust Strip -->
+	<div class="border-b border-border-subtle bg-surface py-8">
+		<div
+			class="container-custom flex flex-wrap justify-center md:justify-between gap-8 text-text-muted text-sm font-medium items-center"
+		>
+			<span>15+ Years Experience</span>
+			<span class="hidden md:inline">•</span>
+			<span>CPA Certified</span>
+			<span class="hidden md:inline">•</span>
+			<span>Trusted by 100+ WA Businesses</span>
+			<span class="hidden md:inline">•</span>
+			<span>Perth Based</span>
+		</div>
+	</div>
+
+	<!-- Services -->
+	<section class="py-24 bg-white">
+		<div class="container-custom">
+			<div class="flex justify-between items-end mb-12">
+				<h2
+					class="font-heading font-bold text-3xl md:text-4xl text-text-main"
+				>
+					Our Expertise
+				</h2>
+				<a
+					href={`${base}services`}
+					class="hidden md:inline-block text-primary font-semibold hover:underline underline-offset-4"
+					>View All Services</a
+				>
+			</div>
+
+			<div class="grid md:grid-cols-3 gap-8">
+				{
+					services.map((service) => (
+						<ServiceCard
+							{...service}
+							href={`${base}${service.href}`}
+						/>
+					))
+				}
+			</div>
+			<div class="mt-12 md:hidden text-center">
+				<a
+					href={`${base}services`}
+					class="text-primary font-semibold hover:underline underline-offset-4"
+					>View All Services</a
+				>
+			</div>
+		</div>
+	</section>
+
+	<!-- Case Studies -->
+	<section class="py-24 bg-surface border-t border-border-subtle">
+		<div class="container-custom">
+			<h2
+				class="font-heading font-bold text-3xl md:text-4xl text-text-main mb-12"
+			>
+				Proven Results
+			</h2>
+			<div class="grid md:grid-cols-3 gap-8">
+				{
+					caseStudies.map((study) => (
+						<CaseStudyCard
+							{...study}
+							href={`${base}${study.href}`}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- Testimonials -->
+	<section class="py-24 bg-white border-t border-border-subtle">
+		<div class="container-custom">
+			<h2
+				class="font-heading font-bold text-3xl md:text-4xl text-text-main mb-12"
+			>
+				Client Feedback
+			</h2>
+			<div class="grid md:grid-cols-3 gap-8">
+				{testimonials.map((t) => <Testimonial {...t} />)}
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="py-24 bg-surface border-t border-border-subtle">
+		<div class="container-custom">
+			<h2
+				class="font-heading font-bold text-3xl md:text-4xl text-text-main mb-12 text-center"
+			>
+				Frequently Asked Questions
+			</h2>
+			<FAQ questions={faqs} />
+		</div>
+	</section>
+
+	<CTASection
+		headline="Ready to discuss your situation?"
+		btnText="Book a Consultation"
+		href={`${base}contact`}
+	/>
+</BaseLayout>

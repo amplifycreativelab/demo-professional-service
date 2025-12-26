@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CaseStudyCard from "../../components/CaseStudyCard.astro";
+import CTASection from "../../components/CTASection.astro";
+
+const caseStudies = [
+    {
+        client: "Manufacturing SME",
+        problem:
+            "Stagnant growth despite increasing market demand and new product lines.",
+        outcome:
+            "22% revenue increase in Q1 post-implementation through optimized supply chain logic.",
+        href: "#",
+    },
+    {
+        client: "Boutique Legal Firm",
+        problem:
+            "Inefficient operational workflows causing billable hour leakage across senior partners.",
+        outcome:
+            "Recovered 15 hours/week of billable time per partner, increasing profitability by 18%.",
+        href: "#",
+    },
+    {
+        client: "Logistics Provider",
+        problem:
+            "High staff turnover affecting service delivery consistency and client trust.",
+        outcome:
+            "Retention rate improved by 40% within 6 months via new performance incentive models.",
+        href: "#",
+    },
+    {
+        client: "E-commerce Retailer",
+        problem: "Low conversion rates despite high traffic volume.",
+        outcome:
+            "Conversion rate doubled (1.2% to 2.5%) after strategic UX audit and funnel restructuring.",
+        href: "#",
+    },
+    {
+        client: "Construction Group",
+        problem: "Cash flow volatility threatening project continuity.",
+        outcome:
+            "Implemented rolling 13-week cash flow model, securing $2M credit facility on better terms.",
+        href: "#",
+    },
+    {
+        client: "Medical Practice",
+        problem:
+            "Compliance risks associated with new patient data regulations.",
+        outcome:
+            "Full compliance achieved with zero audit findings; implemented automated governance framework.",
+        href: "#",
+    },
+];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "") + "/";
+---
+
+<BaseLayout
+    title="Case Studies | Modern Consultant"
+    description="Real results from our work with Perth businesses. Data-driven outcomes in advisory, finance, and strategy."
+>
+    <section class="py-24 bg-surface border-b border-border-subtle">
+        <div class="container-custom">
+            <h1
+                class="font-heading font-bold text-5xl md:text-6xl text-text-main mb-6"
+            >
+                Case Studies
+            </h1>
+            <p class="text-xl text-text-muted max-w-2xl leading-relaxed">
+                We don't sell hours; we sell outcomes. Here is a selection of
+                recent engagements and the tangible results we delivered.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="container-custom">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                {
+                    caseStudies.map((study) => (
+                        <CaseStudyCard {...study} href={study.href} />
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <CTASection
+        headline="Ready to achieve similar results?"
+        btnText="Start a Dialogue"
+        href={`${base}contact`}
+    />
+</BaseLayout>

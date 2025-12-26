@@ -1,0 +1,50 @@
+---
+interface Props {
+    questions: {
+        question: string;
+        answer: string;
+    }[];
+}
+
+const { questions } = Astro.props;
+---
+
+<div class="max-w-3xl mx-auto space-y-4">
+    {
+        questions.map((item) => (
+            <details class="group bg-white border border-border-subtle rounded-sm open:border-primary/50 transition-colors">
+                <summary class="flex justify-between items-center cursor-pointer p-6 font-heading font-semibold text-lg list-none text-text-main group-hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset">
+                    {item.question}
+                    <span class="transform group-open:rotate-180 transition-transform text-primary">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-5 h-5"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                            />
+                        </svg>
+                    </span>
+                </summary>
+                <div class="p-6 pt-0 text-text-muted leading-relaxed">
+                    {item.answer}
+                </div>
+            </details>
+        ))
+    }
+</div>
+<style>
+    /* Remove default triangle */
+    details > summary {
+        list-style: none;
+    }
+    details > summary::-webkit-details-marker {
+        display: none;
+    }
+</style>

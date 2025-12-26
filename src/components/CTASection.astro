@@ -1,0 +1,24 @@
+---
+interface Props {
+    headline: string;
+    btnText: string;
+    href: string;
+}
+const { headline, btnText, href } = Astro.props;
+---
+
+<section class="py-24 bg-surface border-t border-border-subtle">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+        <h2
+            class="font-heading font-bold text-4xl md:text-5xl mb-8 tracking-tight"
+        >
+            {headline}
+        </h2>
+        <a
+            href={href}
+            class="inline-block bg-primary text-white px-8 py-4 rounded font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+        >
+            {btnText}
+        </a>
+    </div>
+</section>

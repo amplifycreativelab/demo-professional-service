@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "../assets/images/hero.webp";
+
+interface Props {
+    headline: string;
+    subheading: string;
+    primaryBtn: string;
+    primaryHref: string;
+    secondaryBtn: string;
+    secondaryHref: string;
+}
+
+const {
+    headline,
+    subheading,
+    primaryBtn,
+    primaryHref,
+    secondaryBtn,
+    secondaryHref,
+} = Astro.props;
+---
+
+<section
+    class="py-24 md:py-32 lg:py-40 border-b border-border-subtle bg-surface"
+>
+    <div class="container-custom grid md:grid-cols-2 gap-12 items-center">
+        <div class="max-w-2xl">
+            <h1
+                class="font-heading font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-8 text-text-main"
+            >
+                {headline}
+            </h1>
+            <p class="text-xl text-text-muted mb-10 leading-relaxed max-w-lg">
+                {subheading}
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a
+                    href={primaryHref}
+                    class="bg-primary text-white px-8 py-4 rounded font-semibold text-center hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+                >
+                    {primaryBtn}
+                </a>
+                <a
+                    href={secondaryHref}
+                    class="px-8 py-4 rounded font-semibold text-text-main border border-border-subtle hover:bg-white hover:border-text-muted transition-all text-center"
+                >
+                    {secondaryBtn}
+                </a>
+            </div>
+        </div>
+        <div class="hidden md:block relative h-full min-h-[400px]">
+            <Image
+                src={heroImage}
+                alt="Abstract modern architecture representing improved structure and clarity"
+                width={800}
+                height={1000}
+                class="w-full h-auto object-cover rounded-sm shadow-xl"
+                loading="eager"
+            />
+        </div>
+    </div>
+</section>
